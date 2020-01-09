@@ -6,7 +6,6 @@ function main() {
         $('.shopping-item__checked').removeClass('shopping-item__checked');
     })
     // VVV Appends the inputted text to a new list item
-    // DOESNT WORK, NEEDS TO HAVE WORKING BUTTONS
     $('#js-shopping-list-form button').click(function(e) {
         e.preventDefault();
         let textIn = $('#shopping-list-entry').val();
@@ -24,14 +23,14 @@ function main() {
         $('.shopping-list').append(liTemplate);
     })
     // VVV Toggles strikethrough and 'check'/'uncheck' text
-    $('.shopping-item-toggle').click(function() {
+    $('body').on('click', '.shopping-item-toggle', function() {
         $(this).parent().siblings().toggleClass('shopping-item__checked');
         $(this).find('.button-label').text(function(i, text) {
             return text === 'uncheck' ? 'check' : 'uncheck';
         });
     });
     // VVV Deletes items from list on click
-    $('.shopping-item-delete').click(function() {
+    $('body').on('click', '.shopping-item-delete', function() {
         $(this).closest('li').toggle();
     });
     // VVV Enter-to-click for 'Add Item'
